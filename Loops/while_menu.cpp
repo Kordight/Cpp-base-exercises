@@ -34,7 +34,7 @@ int main()
     showMenu();
     int instruction;
     cin >> instruction;
-    checkInstruction(1, 2, instruction);
+    instruction = checkInstruction(1, 2, instruction);
     switch (instruction)
     {
     case 1:
@@ -44,10 +44,9 @@ int main()
         outMessage = "World";
         break;
     default:
-        outMessage = "Something went wrong\n";
-        cout << outMessage;
+        cout << "Something went wrong\n";
         break;
     }
-    cout << "Out message is: " << outMessage << "Instruction is: " << instruction << endl;
+    cout << "Out message is: " << outMessage << " Instruction is: " << instruction << endl;
     return 0;
 }
