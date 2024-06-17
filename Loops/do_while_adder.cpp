@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     int userInput, sum, iteration;
-    sum, iteration = 0;
+    sum = 0, iteration = 0;
     cout << "Enter your numbers:\n";
     do
     {

@@ -10,4 +10,78 @@ Task: Write a program that provides an option to sum the results of a survey in 
 Possible solution: i < ( ( var * scale ) / max )
 */
 
-//TO DO Later
+// TO DO Later
+#include <iostream>
+#include <limits>
+#include <algorithm>
+
+using namespace std;
+void draw_chart(int var, int scale, int max)
+{
+    for (int i = 0; i < ((var * scale) / max); i++)
+    {
+        cout << "1";
+    }
+}
+void showMenu()
+{
+    cout << "Survey options \n 1 - Option A \n 2 - Option B \n 3 - Option C\n";
+}
+
+int checkInstruction(int minimum_operation_number, int maximum_operation_number, int instruction)
+{
+    while (instruction < minimum_operation_number || instruction > maximum_operation_number)
+    {
+        if (!cin) // or if(cin.fail())
+        {
+            // user didn't input a number
+            cin.clear();                                              // reset failbit
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // skip bad input
+            // next, request user re-input
+        }
+        else
+        {
+            cout << "Invalid instruction, please try again..." << endl;
+            showMenu();
+            cin >> instruction;
+        }
+    }
+    return (instruction);
+}
+
+int main()
+{
+    int instruction;
+    int option_a = 0, option_b = 0, option_c = 0;
+    showMenu();
+    do
+    {
+        cin >> instruction;
+        instruction = checkInstruction(0, 3, instruction);
+        switch (instruction)
+        {
+        case 1:
+            cout << "Voted for option A\n";
+            option_a++;
+            break;
+        case 2:
+            cout << "Voted for option B\n";
+            option_b++;
+            break;
+        case 3:
+            cout << "Voted for option C\n";
+            option_c++;
+            break;
+        default:
+            cout << "Something went wrong!\n Instruction is: " << instruction << endl;
+            break;
+        }
+    } while (instruction != 0);
+    int max_variable = std::max({option_a, option_b, option_c});
+    cout << "Survey have ended!\n Results:\nOption A: " << option_a << endl
+         << "Option B: " << option_b << endl
+         << "Option C: " << option_c << endl
+         << "Max variable is: " << max_variable << endl;
+    draw_chart(max_variable, 10, max_variable);
+    return 0;
+}
