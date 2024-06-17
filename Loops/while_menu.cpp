@@ -34,7 +34,7 @@ int main()
     showMenu();
     int instruction;
     cin >> instruction;
-    instruction = checkInstruction(1, 2, instruction); // Corrected to assign back to instruction variable
+    checkInstruction(1, 2, instruction);
     switch (instruction)
     {
     case 1:
@@ -44,9 +44,10 @@ int main()
         outMessage = "World";
         break;
     default:
-        cout << "Something went wrong\n";
-        break; // Moved break outside the default block
+        outMessage = "Something went wrong\n";
+        cout << outMessage;
+        break;
     }
-    cout << "Out message is: " << outMessage << " Instruction is: " << instruction << endl; // Corrected output
+    cout << "Out message is: " << outMessage << "Instruction is: " << instruction << endl;
     return 0;
 }
