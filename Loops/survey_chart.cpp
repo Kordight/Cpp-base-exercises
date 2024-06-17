@@ -20,16 +20,37 @@ Possible solution: i < ( ( var * scale ) / max )
 #include <limits>
 #include <algorithm>
 #include <string>
+#include <iomanip>
 
 using namespace std;
-void draw_chart(int var, int scale, int max, const string &chartName)
+float calc_percent(int currentVar, int survey_votes_sum)
+{
+    return static_cast<float>(currentVar) / survey_votes_sum * 100;
+}
+
+void draw_chart(int var, int scale, int max, const string &chartName, int survey_votes_sum)
 {
     cout << chartName << "     ";
+    int i;
     for (int i = 0; i < ((var * scale) / max); i++)
     {
         cout << "[]";
     }
-    cout << endl;
+    if ((scale - (var * scale) / max) > 0)
+    {
+        for (size_t i = 0; i < (scale - (var * scale) / max); i++)
+        {
+            cout << "**";
+        }
+    }
+    if (calc_percent(var, survey_votes_sum) < 10)
+    {
+        cout << "  0" << std::fixed << std::setprecision(2) << calc_percent(var, survey_votes_sum) << "%\n";
+    }
+    else
+    {
+        cout << "  " << std::fixed << std::setprecision(2) << calc_percent(var, survey_votes_sum) << "%\n";
+    }
 }
 void showMenu()
 {
@@ -90,9 +111,10 @@ int main()
     cout << "Survey have ended!\n Results:\nOption A: " << option_a << endl
          << "Option B: " << option_b << endl
          << "Option C: " << option_c << endl
-         << "Max variable is: " << max_variable << endl;
-    draw_chart(option_a, scale_paramater, max_variable, "Option A");
-    draw_chart(option_b, scale_paramater, max_variable, "Option B");
-    draw_chart(option_c, scale_paramater, max_variable, "Option C");
+         << "Max variable value is: " << max_variable << endl;
+    int sum = option_a + option_b + option_c;
+    draw_chart(option_a, scale_paramater, max_variable, "Option A", sum);
+    draw_chart(option_b, scale_paramater, max_variable, "Option B", sum);
+    draw_chart(option_c, scale_paramater, max_variable, "Option C", sum);
     return 0;
 }
