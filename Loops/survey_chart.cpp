@@ -8,20 +8,28 @@ Task: Write a program that provides an option to sum the results of a survey in 
     Try to generate a bar chart, showing the results scaled to fit on the screen regardless of the number of answers given.
 
 Possible solution: i < ( ( var * scale ) / max )
+    chart object expresion (var * scale) / max
+    var - current value
+    scale - How much squares should be generated
+    max - maximum value in survey
+    max will always get n-scale amount.
 */
 
 // TO DO Later
 #include <iostream>
 #include <limits>
 #include <algorithm>
+#include <string>
 
 using namespace std;
-void draw_chart(int var, int scale, int max)
+void draw_chart(int var, int scale, int max, const string &chartName)
 {
+    cout << chartName << "     ";
     for (int i = 0; i < ((var * scale) / max); i++)
     {
-        cout << "1";
+        cout << "[]";
     }
+    cout << endl;
 }
 void showMenu()
 {
@@ -52,6 +60,7 @@ int checkInstruction(int minimum_operation_number, int maximum_operation_number,
 int main()
 {
     int instruction;
+    int scale_paramater = 10;
     int option_a = 0, option_b = 0, option_c = 0;
     showMenu();
     do
@@ -77,11 +86,13 @@ int main()
             break;
         }
     } while (instruction != 0);
-    int max_variable = std::max({option_a, option_b, option_c});
+    int max_variable = max({option_a, option_b, option_c});
     cout << "Survey have ended!\n Results:\nOption A: " << option_a << endl
          << "Option B: " << option_b << endl
          << "Option C: " << option_c << endl
          << "Max variable is: " << max_variable << endl;
-    draw_chart(max_variable, 10, max_variable);
+    draw_chart(option_a, scale_paramater, max_variable, "Option A");
+    draw_chart(option_b, scale_paramater, max_variable, "Option B");
+    draw_chart(option_c, scale_paramater, max_variable, "Option C");
     return 0;
 }
