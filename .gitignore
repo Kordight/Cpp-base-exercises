@@ -1,0 +1,4 @@
+#Ignore all .exe files in repo
+*.exe
+#Ignore .vscode directory 
+.vscode/
