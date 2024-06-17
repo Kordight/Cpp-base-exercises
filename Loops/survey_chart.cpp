@@ -102,6 +102,8 @@ int main()
             cout << "Voted for option C\n";
             option_c++;
             break;
+        case 0:
+            break;
         default:
             cout << "Something went wrong!\n Instruction is: " << instruction << endl;
             break;
