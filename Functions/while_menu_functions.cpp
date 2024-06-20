@@ -64,29 +64,25 @@ void bottles_of_beer()
 }
 double add(double a, double b)
 {
-    double result = a + b;
-    return result;
+    return a + b;
 }
 double subtract(double a, double b)
 {
-    double result = a - b;
-    return result;
+    return a - b;
 }
 double divide(double a, double b)
 {
-    double result = 0;
     if (b == 0)
     {
         cout << "Cannot divide by zero.\n";
-        return result;
+        return 0;
     }
-    result = a / b;
-    return result;
+
+    return a / b;
 }
 double multiply(double a, double b)
 {
-    double result = a * b;
-    return result;
+    return a * b;
 }
 void simple_calculator()
 {
