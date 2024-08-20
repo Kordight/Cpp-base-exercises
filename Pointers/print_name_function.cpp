@@ -7,7 +7,7 @@ void ask_name_and_surname(string *name, string *surname)
 {
     cout << "Enter name: \n";
     cin >> *name;
-    if (*surname != NULL)
+    if (surname != NULL)
     {
         cout << "Enter surname: \n";
         cin >> *surname;
