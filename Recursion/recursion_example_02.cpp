@@ -16,5 +16,6 @@ int power(int x, int y)
     {
         return 1;
     }
+    
     return x * power(x, y - 1);
 }
