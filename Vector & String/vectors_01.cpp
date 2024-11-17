@@ -14,6 +14,23 @@ void print_text_in_frame(const string &text_to_display, const int &frame_width)
     message += line + "\n";
     cout << message;
 }
+void line_between_letters(const string &message)
+{
+    /*
+        for (auto letter : message)
+    {
+        cout << letter << "-";
+    }
+    */
+    for (size_t i = 0; i < message.size(); i++)
+    {
+        cout << message[i];
+        if (i != message.size() - 1)
+        {
+            cout << "-";
+        }
+    }
+}
 int main()
 {
     vector<double> numbers{3.14, 25, 35, 37.21, 23.05};
@@ -36,6 +53,7 @@ int main()
     }
     print_text_in_frame("Modifying vector", 3);
     print_vector(numbers);
+    line_between_letters("Test");
     return 0;
 }
 void print_vector(const vector<double> &numbers)
